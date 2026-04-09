@@ -49,7 +49,7 @@ CollabHub is an end-to-end marketplace designed to bridge the gap between authen
 
 **Tech Stack:-**
 
-**Frontend:** HTML5, CSS
+**Frontend:** HTML5, Tailwind.CSS
 
 **Backend:** Python, Django
 
