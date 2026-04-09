@@ -19,11 +19,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_^wt4mp7rx$-n(v^m+4b@v@x@^0sw_dd4kw0wp3mi8x728c5kf'
+# Hardcoded key ko hata kar ye likhein:
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-fallback-key-for-local')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG ko bhi environment variable se control karein (Optional but recommended)
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['micro-influencer-brand-collaboration-hub.onrender.com']
