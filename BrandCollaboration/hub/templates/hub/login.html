@@ -1,0 +1,36 @@
+{% extends 'hub/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="auth-page-wrapper">
+    <div class="auth-card-container">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            <div class="accent-bar-green"></div> <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Welcome <span class="text-success">Back</span></h2>
+                    <p class="text-muted">Log in to manage your collaborations and earnings.</p>
+                </div>
+
+                <form method="post" class="custom-django-form">
+                    {% csrf_token %}
+                    
+                    <div class="form-body">
+                        {{ form.as_p }}
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-success btn-lg login-btn">
+                            Login to Hub
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-4">
+                    <span class="text-muted small">New to CollabHub?</span>
+                    <a href="{% url 'influencer_signup' %}" class="signup-link"> Join as Creator</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

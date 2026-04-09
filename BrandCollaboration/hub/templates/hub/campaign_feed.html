@@ -1,0 +1,69 @@
+{% extends 'hub/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5 align-items-center">
+        <div class="col-md-8">
+            <h1 class="display-5 fw-bold text-dark">Campaign <span class="text-primary">Discovery</span></h1>
+            <p class="lead text-muted">Opportunities hand-picked for your niche in <strong>{{ user.profile.location|default:"Lucknow" }}</strong>.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+            <div class="badge text-dark shadow-sm p-3 rounded-pill border">
+                <i class="bi bi-person-check-fill text-primary"></i> 
+                Niche: <strong>{{ user.profile.niche|title|default:"General" }}</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex gap-2 mb-4 overflow-auto pb-2">
+        <span class="badge rounded-pill filter-pill active">All Gigs</span>
+        <span class="badge rounded-pill filter-pill">High Match</span>
+        <span class="badge rounded-pill filter-pill">AI Data Labeling</span>
+        <span class="badge rounded-pill filter-pill">Local: Lucknow</span>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+        {% for campaign in campaigns %}
+            <div class="col">
+                <div class="card h-100 campaign-card shadow-sm border-0 rounded-4 overflow-hidden">
+                    <div class="card-header bg-transparent border-0 pt-4 px-4 d-flex justify-content-between align-items-start">
+                        <span class="badge rounded-pill bg-primary-subtle text-primary px-3">{{ campaign.required_niche }}</span>
+                        
+                        <div class="match-circle">
+                            <span class="score-num">{{ campaign.match_score|default:"90" }}</span><span class="percent">%</span>
+                            <small class="d-block">Match</small>
+                        </div>
+                    </div>
+
+                    <div class="card-body px-4">
+                        <h4 class="card-title fw-bold mb-1">{{ campaign.title }}</h4>
+                        <p class="text-primary fw-semibold small mb-3">by {{ campaign.brand.username }}</p>
+                        <p class="card-text text-muted small mb-4">{{ campaign.description|truncatewords:20 }}</p>
+                        
+                        <div class="campaign-meta d-flex justify-content-between border-top pt-3">
+                            <div class="meta-item">
+                                <small class="text-muted d-block small">Budget</small>
+                                <span class="fw-bold text-success">₹{{ campaign.budget }}</span>
+                            </div>
+                            <div class="meta-item text-end">
+                                <small class="text-muted d-block small">Min. Followers</small>
+                                <span class="fw-bold text-dark">{{ campaign.min_followers|default:"500" }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-0 pb-4 px-4">
+                        <a href="{% url 'apply_to_campaign' campaign.id %}" class="btn btn-primary w-100 btn-lg rounded-pill shadow-sm">View & Apply</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center py-5">
+                <h3 class="text-muted">No campaigns found for your niche.</h3>
+                <a href="{% url 'profile_edit' %}" class="btn btn-link">Update your profile</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
