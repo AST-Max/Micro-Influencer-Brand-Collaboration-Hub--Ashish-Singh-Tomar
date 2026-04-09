@@ -1,0 +1,56 @@
+{% extends 'hub/base.html' %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="bg-primary" style="height: 120px;"></div>
+                
+                <div class="card-body pt-0 px-5 pb-5">
+                    <div class="text-center" style="margin-top: -60px;">
+                            {% if user.profile.profile_picture %}
+                             <img src="{{ user.profile.profile_picture.url }}" class="rounded-circle border border-4 border-white shadow-sm" width="120" height="120">
+                              {% else %}
+                              <div class="rounded-circle border border-4 border-primary shadow-sm d-inline-flex align-items-center justify-content-center" style="width: 120px; height: 120px;">
+                                <i class="bi bi-person-badge text-primary" style="font-size: 3rem;"></i>
+                              </div>
+                            {% endif %}
+    
+                            <h2 class="fw-bold mt-3 mb-0">{{ user.username }}</h2>
+                            <p class="text-muted"><i class="bi bi-geo-alt-fill text-danger"></i> {{ user.profile.location|default:"Lucknow, UP" }}</p>
+                    </div>
+                    <div class="row text-center mt-4">
+                        <div class="col border-end">
+                            <h4 class="fw-bold mb-0">{{ user.profile.follower_count }}</h4>
+                            <small class="text-muted">Followers</small>
+                        </div>
+                        <div class="col">
+                            <h4 class="fw-bold mb-0 text-primary">{{ user.profile.niche|title|default:"General" }}</h4>
+                            <small class="text-muted">Niche</small>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <h6 class="fw-bold">About Me</h6>
+                        <p class="text-muted">{{ user.profile.bio|default:"This creator hasn't written a bio yet." }}</p>
+                        
+                        <div class="mt-4 p-3 rounded-3 d-flex align-items-center">
+                            <i class="bi bi-instagram text-danger fs-4 me-3"></i>
+                            <div>
+                                <small class="text-muted d-block">Instagram</small>
+                                <span class="fw-bold">{{ user.profile.instagram_handle|default:"@username" }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 d-grid">
+                        <a href="{% url 'profile_edit' %}" class="btn btn-outline-primary rounded-pill fw-bold">
+                            <i class="bi bi-pencil-square me-2"></i> Edit My Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

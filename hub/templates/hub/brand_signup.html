@@ -1,0 +1,24 @@
+{% extends 'hub/base.html' %}
+{% block content %}
+<div class="signup-page-wrapper">
+    <div class="signup-card-container">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            <div class="accent-bar bg-dark"></div> <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">Register as a <span class="text-dark">Brand</span></h2>
+                    <p class="text-muted">Hire top creators in Lucknow for your next campaign.</p>
+                </div>
+                <form method="post" class="custom-django-form">
+                    {% csrf_token %}
+                    <div class="form-body">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-dark btn-lg signup-btn">Create Brand Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
