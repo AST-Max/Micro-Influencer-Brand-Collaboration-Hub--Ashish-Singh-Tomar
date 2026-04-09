@@ -121,13 +121,28 @@ USE_TZ = True
 # STATICFILES_DIRS = [
 #     BASE_DIR / "static",
 # ]
+# The URL to use when referring to static files
+STATIC_URL = '/static/'
+
+# The absolute path to the directory where collectstatic will collect static files for deployment
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Extra places for collectstatic to find static files
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 
 AUTH_USER_MODEL = 'hub.User'
 
-
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login' 
