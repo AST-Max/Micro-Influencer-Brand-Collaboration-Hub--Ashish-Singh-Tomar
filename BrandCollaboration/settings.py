@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_^wt4mp7rx$-n(v^m+4b@v@x@^0sw_dd4kw0wp3mi8x728c5kf
 DEBUG = False
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['micro-influencer-brand-collaboration-hub.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['micro-influencer-brand-collaboration-hub.onrender.com']
 
 
 # Application definition
