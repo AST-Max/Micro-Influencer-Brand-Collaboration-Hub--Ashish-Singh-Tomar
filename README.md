@@ -65,4 +65,4 @@ Reduces time and effort for brands in finding the right influencers while empowe
 
 Presentation:https://docs.google.com/presentation/d/1AGTqxsvmCGMnSGnMM164xAOVoWfl0lcu/edit?usp=drivesdk&ouid=103177809022215355576&rtpof=true&sd=true
 
-Live Demo: [Your Render URL]
+Live Demo: https://micro-influencer-brand-collaboration-hub.onrender.com
