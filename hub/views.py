@@ -23,7 +23,7 @@ def influencer_signup(request):
             return redirect('profile_edit')
     else:
         form = InfluencerSignUpForm()
-    return render(request, 'hub/influencer_signup.html', {'form': form})
+    return render(request, 'hub/signup.html', {'form': form})
 
 def brand_signup(request):
     if request.method == 'POST':
